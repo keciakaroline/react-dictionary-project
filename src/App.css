@@ -1,4 +1,21 @@
+body {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(215, 223, 252) 0%,
+    rgb(255, 255, 255) 0%,
+    rgb(215, 223, 252) 84%
+  );
+}
+
+a {
+  color: #3a96dd;
+}
+
 .App .App-footer {
   font-size: 12px;
   margin-top: 50px;
+}
+
+.App .App-footer a {
+  text-decoration: none;
 }
