@@ -2,16 +2,15 @@ import React from "react";
 
 export default function Phonetic(props) {
   // console.log(props.phonetic);
+  let audio = new Audio(props.phonetic.audio);
+
+  function start() {
+    audio.play();
+  }
+
   return (
     <div className="Phonetic">
-      <a href={props.phonetic.audio} target="_blank" rel="noreferrer">
-        <img
-          src="https://yeyeong-react-dictionary.netlify.app/static/media/volume-up.1175ee35976a5046a3b8c79c30515164.svg"
-          alt="volume"
-          width="20"
-          height="20"
-        ></img>
-      </a>
+      <i class="fa-regular fa-circle-play" onClick={start}></i>
 
       {props.phonetic.text}
     </div>
