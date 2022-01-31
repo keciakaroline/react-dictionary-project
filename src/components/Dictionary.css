@@ -14,12 +14,21 @@
   margin: 20px 0;
 }
 
-.Dictionary input {
+.Dictionary .input-form {
   width: 100%;
   padding: 6px 4px;
   border: 1px solid #ddd;
   border-radius: 8px;
   color: #333;
+}
+
+.Dictionary .btn-form {
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #333;
+  transition: all 100ms ease-in-out;
 }
 
 .Dictionary .hint {

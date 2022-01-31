@@ -4,38 +4,72 @@ import axios from "axios";
 import "./Dictionary.css";
 import Phonetic from "./Phonetic";
 
-export default function Dictionary() {
-  const [keyword, setKeyword] = useState("");
+export default function Dictionary(props) {
+  const [keyword, setKeyword] = useState(props.defaultKeyword);
   const [results, setResults] = useState("");
+  const [loaded, setLoaded] = useState(false);
 
   function handleResponse(response) {
     //console.log(response.data[0]);
     setResults(response.data[0]);
   }
 
-  function search(event) {
-    event.preventDefault();
-
+  function search() {
     //documentation api: https://dictionaryapi.dev/
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
   }
 
   function handleNewKeyword(event) {
     setKeyword(event.target.value);
   }
 
-  return (
-    <div className="Dictionary">
-      <h1>Dictionary 📚</h1>
-      <section>
-        <form onSubmit={search} className="text-center pt-4">
-          <input type="search" autoFocus={true} onChange={handleNewKeyword} />
-        </form>
-        <div className="hint">word must be spelled correctly & in English</div>
-      </section>
+  function load() {
+    setLoaded(true);
+    search();
+  }
 
-      <Results results={results} />
-    </div>
-  );
+  if (loaded) {
+    return (
+      <div className="Dictionary">
+        <h1>Dictionary 📚</h1>
+        <section>
+          <form>
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-10">
+                  <input
+                    type="search"
+                    className="input-form"
+                    autoFocus={true}
+                    onChange={handleNewKeyword}
+                  />
+                </div>
+                <div className="col-sm-2">
+                  <input
+                    type="submit"
+                    onSubmit={handleSubmit}
+                    className="btn-form"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          <div className="hint">
+            word must be spelled correctly & in English
+          </div>
+        </section>
+
+        <Results results={results} />
+      </div>
+    );
+  } else {
+    load();
+    return "Loading";
+  }
 }
