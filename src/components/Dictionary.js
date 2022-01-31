@@ -32,7 +32,7 @@ export default function Dictionary() {
         <form onSubmit={search} className="text-center pt-4">
           <input type="search" autoFocus={true} onChange={handleNewKeyword} />
         </form>
-        <h6>word must be spelled correctly & in English</h6>
+        <div className="hint">word must be spelled correctly & in English</div>
       </section>
 
       <Results results={results} />

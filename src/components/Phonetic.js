@@ -7,12 +7,13 @@ export default function Phonetic(props) {
   function start() {
     audio.play();
   }
-
-  return (
-    <div className="Phonetic">
-      <i class="fa-regular fa-circle-play" onClick={start}></i>
-
-      {props.phonetic.text}
-    </div>
-  );
+  if (props.phonetic.audio) {
+    return (
+      <div className="Phonetic">
+        <i class="far fa-play-circle" onClick={start}></i> {props.phonetic.text}
+      </div>
+    );
+  } else {
+    return <div className="phonetic">{props.phonetic.text}</div>;
+  }
 }
