@@ -1,0 +1,16 @@
+.Phonetic {
+  height: 40px;
+}
+
+.Phonetic .text {
+  opacity: 0.8;
+}
+
+.Phonetic .icon {
+  font-size: 20px;
+  padding: 10px 5px;
+}
+
+.Phonetic .icon:hover {
+  cursor: pointer;
+}

@@ -28,7 +28,12 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   color: #333;
-  transition: all 100ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.Dictionary .btn-form:hover {
+  background-color: #5d768b;
+  color: #fff;
 }
 
 .Dictionary .hint {
