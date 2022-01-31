@@ -8,6 +8,7 @@
 
 .Meaning .definition {
   font-size: 18px;
+  justify-content: start;
 }
 
 .Meaning .definition::first-letter {

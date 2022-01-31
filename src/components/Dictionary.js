@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Results from "./Results";
 import axios from "axios";
 import "./Dictionary.css";
-import Phonetic from "./Phonetic";
 
 export default function Dictionary(props) {
   const [keyword, setKeyword] = useState(props.defaultKeyword);
@@ -39,6 +38,7 @@ export default function Dictionary(props) {
       <div className="Dictionary">
         <h1>Dictionary 📚</h1>
         <section>
+          <h2>What word do you want to look up?</h2>
           <form>
             <div className="container">
               <div className="row">
