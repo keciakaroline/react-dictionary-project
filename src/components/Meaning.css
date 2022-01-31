@@ -1,0 +1,21 @@
+.Meaning h3 {
+  text-align: center;
+  margin-bottom: 13px;
+  text-decoration: underline;
+  font-size: 26px;
+  line-height: 1.5;
+}
+
+.Meaning .definition {
+  font-size: 18px;
+}
+
+.Meaning .definition::first-letter {
+  text-transform: uppercase;
+}
+
+.Meaning .example {
+  font-style: italic;
+  font-size: 16px;
+  opacity: 0.8;
+}
