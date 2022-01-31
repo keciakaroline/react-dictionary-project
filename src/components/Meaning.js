@@ -22,6 +22,7 @@ export default function Meaning(props) {
         );
       })}
     </div>
+
     // <p>{props.meaning.definitions[0].definition}</p>
     // <p>{props.meaning.definitions[0].example}</p>
   );

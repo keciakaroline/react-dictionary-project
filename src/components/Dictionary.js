@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Results from "./Results";
 import axios from "axios";
 import "./Dictionary.css";
+import Phonetic from "./Phonetic";
 
 export default function Dictionary() {
   const [keyword, setKeyword] = useState("");
