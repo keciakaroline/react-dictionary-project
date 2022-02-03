@@ -30,11 +30,7 @@ export default function Dictionary(props) {
       "563492ad6f91700001000001c80cafe5e273474b88ca60632d697ba3";
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=9`;
     let headers = { Authorization: `Bearer ${pexelsApiKey}` };
-    axios
-      .get(pexelsApiUrl, {
-        headers: headers,
-      })
-      .then(handlePexelsResponse);
+    axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
 
   function handleSubmit(event) {
@@ -60,7 +56,7 @@ export default function Dictionary(props) {
           <form onSubmit={handleSubmit}>
             <div className="container">
               <div className="row">
-                <div className="col-sm-10">
+                <div className="col-sm-9">
                   <input
                     type="search"
                     className="input-form"
@@ -68,7 +64,7 @@ export default function Dictionary(props) {
                     onChange={handleNewKeyword}
                   />
                 </div>
-                <div className="col-sm-2">
+                <div className="col-sm-3">
                   <input type="submit" className="btn-form" />
                 </div>
               </div>
