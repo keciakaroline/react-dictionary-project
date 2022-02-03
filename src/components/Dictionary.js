@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Results from "./Results";
+import Photos from "./Photos";
 import axios from "axios";
 import "./Dictionary.css";
 
@@ -7,16 +8,33 @@ export default function Dictionary(props) {
   const [keyword, setKeyword] = useState(props.defaultKeyword);
   const [results, setResults] = useState("");
   const [loaded, setLoaded] = useState(false);
+  const [photos, setPhotos] = useState("");
 
   function handleResponse(response) {
     //console.log(response.data[0]);
     setResults(response.data[0]);
+    setLoaded(true);
+  }
+
+  function handlePexelsResponse(response) {
+    //console.log(response.data);
+    setPhotos(response.data.photos);
   }
 
   function search() {
     //documentation api: https://dictionaryapi.dev/
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
+
+    let pexelsApiKey =
+      "563492ad6f91700001000001c80cafe5e273474b88ca60632d697ba3";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=1`;
+    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
+    axios
+      .get(pexelsApiUrl, {
+        headers: headers,
+      })
+      .then(handlePexelsResponse);
   }
 
   function handleSubmit(event) {
@@ -29,7 +47,6 @@ export default function Dictionary(props) {
   }
 
   function load() {
-    setLoaded(true);
     search();
   }
 
@@ -39,7 +56,7 @@ export default function Dictionary(props) {
         <h1>Dictionary 📚</h1>
         <section>
           <h2>What word do you want to look up?</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="container">
               <div className="row">
                 <div className="col-sm-10">
@@ -51,11 +68,7 @@ export default function Dictionary(props) {
                   />
                 </div>
                 <div className="col-sm-2">
-                  <input
-                    type="submit"
-                    onSubmit={handleSubmit}
-                    className="btn-form"
-                  />
+                  <input type="submit" className="btn-form" />
                 </div>
               </div>
             </div>
@@ -64,8 +77,8 @@ export default function Dictionary(props) {
             word must be spelled correctly & in English
           </div>
         </section>
-
         <Results results={results} />
+        <Photos photos={photos} />
       </div>
     );
   } else {
