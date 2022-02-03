@@ -6,6 +6,11 @@
 .Synonyms li {
   font-size: 14px;
   display: inline-block;
-  padding-right: 10px;
+  padding: 3px 5px;
   line-height: 1;
+
+  background-color: #f886cc;
+  color: #3d5e7c;
+  border-radius: 6px;
+  margin-right: 20px;
 }

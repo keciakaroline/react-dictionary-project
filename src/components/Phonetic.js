@@ -11,7 +11,7 @@ export default function Phonetic(props) {
 
   return (
     <div className="Phonetic">
-      <i class="far fa-play-circle icon" onClick={start}></i>{" "}
+      <i className="far fa-play-circle icon" onClick={start}></i>{" "}
       <span className="text">{props.phonetic.text}</span>
     </div>
   );
